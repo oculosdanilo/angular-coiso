@@ -1,1 +1,24 @@
-<p>carrinho works!</p>
+<h3>Cart</h3>
+
+<p>
+  <a routerLink="/frete">Shipping Prices</a>
+</p>
+
+<div class="cart-item" *ngFor="let item of itens">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>
+
+<form [formGroup]="formCheckout" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="nome" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="endereco" />
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+</form>
